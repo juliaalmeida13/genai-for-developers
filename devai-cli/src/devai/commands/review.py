@@ -12,6 +12,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+#devai review security -c ~/github/genai-for-developers/sample-app/src/main/java
 
 import click
 from devai.util.file_processor import format_files_as_string
@@ -34,8 +35,8 @@ from rich.table import Table
 
 # Uncomment after configuring JIRA and GitLab env variables - see README.md for details
 
-# from devai.commands.jira import create_jira_issue
-# from devai.commands.gitlab import create_gitlab_issue_comment
+from devai.commands.jira import create_jira_issue
+from devai.commands.gitlab import create_gitlab_issue_comment
 
 USER_AGENT = 'cloud-solutions/genai-for-developers-v1.0'
 
@@ -353,8 +354,8 @@ Provide an overview or overall impression entry for the code as the first entry.
     else:
         click.echo(response.text) 
 
-    #create_jira_issue("Code Review Results", response.text)
-    # create_gitlab_issue_comment(response.text)
+    create_jira_issue("Code Review Results", response.text)
+    create_gitlab_issue_comment(response.text)
 
 
 @click.command()
